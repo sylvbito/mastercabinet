@@ -1,0 +1,23 @@
+{
+  "hero": {
+    "variant": "image-full",
+    "eyebrow": "MasterCabinet — Melbourne",
+    "title": "Your dream kitchen, designed and built by you.",
+    "intro": "Design your custom kitchen online in minutes. Choose finishes, visualise swatches, get an instant ballpark price, and book a free Zoom consultation — all from one place.",
+    "primaryLabel": "Design Your Kitchen",
+    "primaryUrl": "/#design-wizard",
+    "imageUrl": "/mastercabinet/uploads/hero-kitchen.jpg"
+  },
+  "servicesVariant": "grid",
+  "testimonialsVariant": "grid",
+  "galleryVariant": "portfolio",
+  "ctaVariant": "band",
+  "gallery": [
+    { "title": "Modern kitchen renovation", "description": "Custom cabinetry, Hampton style, Brighton", "imageUrl": "/mastercabinet/uploads/gallery-1.jpg" },
+    { "title": "Handleless kitchen", "description": "Minimalist joinery, Fitzroy North", "imageUrl": "/mastercabinet/uploads/gallery-2.jpg" },
+    { "title": "Walk-in pantry", "description": "Full-height storage, Malvern", "imageUrl": "/mastercabinet/uploads/gallery-3.jpg" },
+    { "title": "Scandinavian kitchen", "description": "Light oak and white cabinetry, Elwood", "imageUrl": "/mastercabinet/uploads/gallery-4.jpg" },
+    { "title": "Laundry fit-out", "description": "Custom bench and overheads, Reservoir", "imageUrl": "/mastercabinet/uploads/gallery-5.jpg" },
+    { "title": "Butler's pantry", "description": "Premium joinery, Kew", "imageUrl": "/mastercabinet/uploads/gallery-6.jpg" }
+  ]
+}

@@ -1,0 +1,60 @@
+---
+interface Props {
+  headline?: string;
+  body?: string;
+}
+
+const {
+  headline = 'Built around materials, precision, and people.',
+  body = 'MasterCabinet designs and builds custom cabinetry for Melbourne homes. Every project begins online — use our design tool to choose finishes, see your price, and book a free Zoom consultation. We handle the full process in-house: design, measure, manufacture, and installation. No subcontractors, no hand-offs. Just a single team accountable for the result.'
+} = Astro.props;
+---
+
+<section class="introduction">
+  <div class="container">
+    <div class="introduction__grid grid-12">
+      <h2 class="introduction__headline">{headline}</h2>
+      <div class="introduction__body">
+        <p>{body}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .introduction {
+    padding-block: var(--section-y);
+  }
+
+  .introduction__grid {
+    row-gap: var(--space-5);
+    align-items: start;
+  }
+
+  .introduction__headline {
+    grid-column: 1 / span 5;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 500;
+    line-height: 1.15;
+    margin: 0;
+    color: var(--color-heading);
+  }
+
+  .introduction__body {
+    grid-column: 7 / span 6;
+  }
+
+  .introduction__body p {
+    font-size: var(--text-md);
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  @media (max-width: 720px) {
+    .introduction__headline,
+    .introduction__body {
+      grid-column: 1;
+    }
+  }
+</style>

@@ -1,0 +1,42 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PageIntro from '@components/PageIntro.astro';
+import Section from '@components/Section.astro';
+import GalleryBlock from '@components/GalleryBlock.astro';
+import CTABand from '@components/CTABand.astro';
+---
+
+<BaseLayout title="About" description="Custom cabinetry and kitchen design for Melbourne homes. Design online, book a free Zoom consultation.">
+  <PageIntro
+    eyebrow="About"
+    title="Cabinet makers who still care about the joinery"
+    intro="We design, build, and install custom cabinetry for Melbourne homes. Every project starts with a design tool and ends with a walk-through."
+  />
+
+  <Section title="How we work" narrow>
+    <div class="prose">
+      <p>
+        MasterCabinet was founded on a simple idea: custom cabinetry should be designed online, priced upfront, and built by people who
+        take pride in the joinery — not assembled from flat-pack components on a tight schedule. We serve Melbourne homeowners
+        from the inner suburbs to the outer ring.
+      </p>
+      <p>
+        Every project is designed in the online tool, quoted transparently, built in our Melbourne workshop, and installed by our own crew.
+        We do not sub-contract installation and we do not rush the finish work. That is why our cabinetry lasts.
+      </p>
+      <p>
+        Whether you need a single custom wardrobe or a full kitchen fit-out, we will treat your project with the same attention to
+        detail — and give you a clear timeline and a fixed price before we start.
+      </p>
+    </div>
+  </Section>
+
+  <Section variant="surface" eyebrow="Our work" title="Recent projects">
+    <GalleryBlock />
+  </Section>
+
+  <CTABand
+    title="Ready to design your kitchen?"
+    text="Use our online tool to design your cabinetry, see the price, and book a free Zoom consultation."
+  />
+</BaseLayout>

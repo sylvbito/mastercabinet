@@ -1,0 +1,24 @@
+{
+  "name": "MasterCabinet",
+  "description": "Premium custom cabinetry and kitchen design for Melbourne homes. Design your dream kitchen online — visualise, price, and book your consultation.",
+  "url": "https://mastercabinet.com.au",
+  "email": "admin@mastercabinet.com.au",
+  "phone": "0423 162 515",
+  "address": "Melbourne VIC, Australia",
+  "ctaLabel": "Design Your Kitchen",
+  "ctaUrl": "/#design-wizard",
+  "socialLinks": [
+    {
+      "label": "Facebook",
+      "url": "https://facebook.com/mastercabinet"
+    },
+    {
+      "label": "Instagram",
+      "url": "https://instagram.com/mastercabinet"
+    },
+    {
+      "label": "Twitter",
+      "url": "https://twitter.com/mastercabinet"
+    }
+  ]
+}

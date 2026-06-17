@@ -1,0 +1,900 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Introduction from '@components/Introduction.astro';
+import SelectedWork from '@components/SelectedWork.astro';
+import ProcessStrip from '@components/ProcessStrip.astro';
+import FeatureQuote from '@components/FeatureQuote.astro';
+import Section from '@components/Section.astro';
+import ContactBlock from '@components/ContactBlock.astro';
+import Testimonials from '@components/Testimonials.astro';
+import FAQList from '@components/FAQList.astro';
+import { byOrder } from '../lib/content';
+
+const site = await getEntry('settings', 'site');
+const home = await getEntry('pages', 'home');
+const testimonials = byOrder(await getCollection('testimonials'));
+const services = byOrder(await getCollection('services'));
+const featuredServices = services.slice(0, 4);
+
+const faqs = byOrder(await getCollection('faqs'));
+
+const hero = home?.data.hero;
+const projects = home?.data.gallery;
+
+/* Use Sarah Chen's testimonial — strongest quote. */
+const featureTestimonial = testimonials.find((t) => t.id === 'sarah-chen') ?? testimonials[0];
+
+/* Service images */
+const serviceImages: Record<string, string> = {
+  kitchens: '/mastercabinet/uploads/gallery-1.jpg',
+  bathrooms: '/mastercabinet/uploads/gallery-5.jpg',
+  laundries: '/mastercabinet/uploads/gallery-3.jpg',
+  wardrobes: '/mastercabinet/uploads/gallery-2.jpg',
+  cabinetry: '/mastercabinet/uploads/gallery-4.jpg'
+};
+
+const wizardSteps = [
+  {
+    step: '01',
+    title: 'Choose your style',
+    description: 'Browse handleless, Hamptons, Scandinavian, or classic. Pick your door profile, colour, and finish from real swatches.'
+  },
+  {
+    step: '02',
+    title: 'Design your layout',
+    description: 'Arrange your cabinets, benchtops, and appliances on a plan. See real-time visual updates as you go.'
+  },
+  {
+    step: '03',
+    title: 'See your price',
+    description: 'Get an instant ballpark estimate based on your selections. Adjust finishes and dimensions to fit your budget.'
+  },
+  {
+    step: '04',
+    title: 'Book your consult',
+    description: 'Lock in your design and book a free 30-minute Zoom call with our team. We refine the details, measure your space, and provide an accurate quote.'
+  }
+];
+
+const pricingTiers = [
+  { label: 'Essentials', price: '$8,000–$15,000', description: 'Flat-panel doors, laminate benchtop, standard hardware. Perfect for investment properties or budget-conscious renovations.' },
+  { label: 'Signature', price: '$15,000–$30,000', description: 'Shaker or profiled doors, engineered stone bench, soft-close hardware. The sweet spot for most Melbourne homes.' },
+  { label: 'Premium', price: '$30,000+', description: 'Custom joinery, solid timber or marble benchtops, integrated appliances, designer hardware. For the home that has it all.' }
+];
+---
+
+<BaseLayout>
+  <!-- ── Hero: full-bleed background image ── -->
+  <section class="home-hero">
+    <div
+      class="home-hero__bg"
+      style="background-image: url('/mastercabinet/uploads/hero-kitchen.jpg')"
+      aria-hidden="true"
+    ></div>
+    <div class="home-hero__blur" aria-hidden="true"></div>
+    <div class="home-hero__overlay" aria-hidden="true"></div>
+    <div class="home-hero__inner container grid-12">
+      <div class="home-hero__content">
+        <p class="home-hero__eyebrow hero-enter hero-enter--eyebrow">MasterCabinet — Melbourne</p>
+        <h1 class="home-hero__h1">{hero?.title ?? 'Your dream kitchen, designed by you.'}</h1>
+        <p class="home-hero__intro hero-enter hero-enter--intro">{hero?.intro ?? 'Design your custom kitchen online in minutes. Choose finishes, visualise swatches, get an instant ballpark price.'}</p>
+        <div class="home-hero__actions hero-enter hero-enter--actions">
+          <a class="home-hero__button" href="/#design-wizard">
+            Design Your Kitchen &rarr;
+          </a>
+          <a class="home-hero__button-secondary" href="/services/">
+            View our work &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="home-hero__scroll hero-enter hero-enter--scroll" aria-hidden="true">&darr;</div>
+  </section>
+
+  <!-- ── Design Wizard: the core concept ── -->
+  <section id="design-wizard" class="wizard-section">
+    <div class="container">
+      <div class="wizard-section__header">
+        <p class="eyebrow">Design Your Kitchen</p>
+        <h2 class="wizard-section__title">Build your dream kitchen in 4 easy steps.</h2>
+        <p class="wizard-section__intro">No appointments, no pressure. Our online design tool puts you in control — choose finishes, see your price, and book a consultation when you're ready.</p>
+      </div>
+
+      <div class="wizard-steps">
+        {wizardSteps.map((step) => (
+          <div class="wizard-step">
+            <div class="wizard-step__number">{step.step}</div>
+            <div class="wizard-step__content">
+              <h3 class="wizard-step__title">{step.title}</h3>
+              <p class="wizard-step__desc">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="wizard-cta">
+        <a class="home-hero__button" href="/contact/">Start Designing Free &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Swatch Preview: visual hint of swatches ── -->
+  <section class="swatch-preview">
+    <div class="container">
+      <div class="swatch-preview__grid">
+        <div class="swatch-preview__item" style="--swatch: #F5F0EB;">
+          <span class="swatch-preview__label">White Matt</span>
+        </div>
+        <div class="swatch-preview__item" style="--swatch: #2D3436;">
+          <span class="swatch-preview__label">Charcoal Matt</span>
+        </div>
+        <div class="swatch-preview__item" style="--swatch: #C4956A;">
+          <span class="swatch-preview__label">Warm Oak</span>
+        </div>
+        <div class="swatch-preview__item" style="--swatch: #1B2A4A;">
+          <span class="swatch-preview__label">Navy</span>
+        </div>
+        <div class="swatch-preview__item" style="--swatch: #8B7D6B;">
+          <span class="swatch-preview__label">Stone Grey</span>
+        </div>
+        <div class="swatch-preview__item" style="--swatch: #D4AF37;">
+          <span class="swatch-preview__label">Brass</span>
+        </div>
+      </div>
+      <p class="swatch-preview__hint">Choose from 40+ finishes, door styles, and benchtop materials.</p>
+    </div>
+  </section>
+
+  <!-- ── How It Works (Process Strip) ── -->
+  <hr class="section-divider" aria-hidden="true" />
+
+  <section class="process-context">
+    <div class="container">
+      <p class="eyebrow">From online to installed</p>
+      <h2 class="process-context__title">How it works</h2>
+    </div>
+  </section>
+  <ProcessStrip />
+
+  <!-- ── Services: 4 image tiles ── -->
+  <section class="services-inline">
+    <div class="container">
+      <p class="section-heading">OUR SERVICES</p>
+
+      <div class="services-inline__track grid-12">
+        {featuredServices.map((service) => (
+          <a href={`/services/${service.id}/`} class="services-inline__item">
+            <div class="services-inline__image-wrap">
+              <img
+                src={serviceImages[service.id] ?? '/mastercabinet/uploads/gallery-1.jpg'}
+                alt={service.data.title}
+                loading="lazy"
+              />
+            </div>
+            <div class="services-inline__label-block">
+              <span class="services-inline__label">{service.data.title}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Ballpark Pricing ── -->
+  <section class="pricing-section">
+    <div class="container">
+      <div class="pricing-section__header">
+        <p class="eyebrow">Transparent pricing</p>
+        <h2 class="pricing-section__title">What your kitchen might cost</h2>
+        <p class="pricing-section__intro">Ballpark estimates based on your selections. Tweak finishes and size in the online tool to see how the price changes in real time.</p>
+      </div>
+
+      <div class="pricing-grid">
+        {pricingTiers.map((tier) => (
+          <div class="pricing-card">
+            <h3 class="pricing-card__label">{tier.label}</h3>
+            <p class="pricing-card__price">{tier.price}</p>
+            <p class="pricing-card__desc">{tier.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Testimonial ── -->
+  <FeatureQuote
+    quote={featureTestimonial?.data?.quote}
+    name={featureTestimonial?.data?.name}
+    role={featureTestimonial?.data?.role}
+  />
+
+  <!-- ── FAQ Accordion ── -->
+  <section class="faq-section">
+    <div class="container">
+      <p class="eyebrow">Common questions</p>
+      <h2 class="faq-section__title">Got questions? We've got answers.</h2>
+      <FAQList faqs={faqs} />
+    </div>
+  </section>
+
+  <!-- ── CTA Band ── -->
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-band__inner">
+        <div class="cta-band__content">
+          <p class="cta-band__eyebrow">Ready to start?</p>
+          <h2 class="cta-band__title">Design your kitchen online — it's free.</h2>
+          <p class="cta-band__text">Use our online tool to create your design, see the price, and book a free Zoom consultation. No obligation, just expert advice.</p>
+          <div class="cta-band__actions">
+            <a class="home-hero__button" href="/contact/">Start Designing &rarr;</a>
+            <a class="home-hero__button-secondary cta-band__secondary" href="https://calendly.com/mastercabinet" target="_blank" rel="noopener">
+              Book a Zoom Call
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style is:global>
+  /* ═══════════════════════════════════════════════
+     Hero — full-bleed background, nav overlaid
+     ═══════════════════════════════════════════════ */
+
+  .home-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    background: var(--color-overlay-strong);
+  }
+
+  .home-hero__bg {
+    position: absolute;
+    inset: -8% 0;
+    background-position: center 35%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: 0;
+    transform-origin: center center;
+    animation: hero-bg-breathe 2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes hero-bg-breathe {
+    from { transform: scale(1.07); }
+    to   { transform: scale(1); }
+  }
+
+  .home-hero__blur {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      black 0%,
+      black 35%,
+      transparent 70%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      black 0%,
+      black 35%,
+      transparent 70%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
+  .home-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.15) 50%,
+      rgba(0, 0, 0, 0.05) 75%
+    );
+    z-index: 2;
+    animation: hero-overlay-in 1.4s ease both;
+  }
+
+  @keyframes hero-overlay-in {
+    from { opacity: 0.3; }
+    to   { opacity: 1; }
+  }
+
+  .home-hero__inner {
+    position: relative;
+    z-index: 2;
+    width: min(100% - (var(--gutter) * 2), var(--container));
+  }
+
+  .home-hero__content {
+    grid-column: 1 / span 5;
+  }
+
+  .home-hero__eyebrow {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: var(--space-4);
+  }
+
+  .home-hero__content h1 {
+    font-weight: 500;
+    font-size: var(--text-3xl);
+    line-height: var(--line-tight);
+    color: #ffffff;
+    margin-bottom: var(--space-5);
+    opacity: 0;
+  }
+
+  .home-hero__intro {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 34rem;
+    margin-bottom: var(--space-6);
+    line-height: 1.75;
+  }
+
+  .home-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .home-hero__button-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.1rem 0.9rem 1.25rem;
+    background: transparent;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: var(--text-base);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    line-height: 1;
+    transition: border-color 0.2s ease;
+  }
+
+  .home-hero__button-secondary:hover {
+    border-color: #ffffff;
+  }
+
+  .home-hero__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.1rem 0.9rem 1.25rem;
+    background: var(--color-gold);
+    color: #ffffff;
+    font-weight: 500;
+    font-size: var(--text-base);
+    text-decoration: none;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: filter 0.2s ease;
+  }
+
+  .home-hero__button:hover {
+    filter: brightness(1.15);
+  }
+
+  .home-hero__scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+  }
+
+  @keyframes hero-enter {
+    from {
+      opacity: 0;
+      transform: translateY(36px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes hero-scroll-appear-bounce {
+    0%   { opacity: 0; transform: translateX(-50%) translateY(0); }
+    20%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+    60%  { opacity: 1; transform: translateX(-50%) translateY(7px); }
+    100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
+  .hero-enter {
+    opacity: 0;
+    animation: hero-enter 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-enter--eyebrow { animation-delay: 0.3s; }
+  .hero-enter--intro   { animation-delay: 0.55s; }
+  .hero-enter--actions { animation-delay: 0.8s; }
+  .hero-enter--scroll {
+    animation: hero-scroll-appear-bounce 3.2s cubic-bezier(0.22, 1, 0.36, 1) 1.4s both;
+    animation-iteration-count: infinite;
+  }
+
+  @media (max-width: 820px) {
+    .home-hero__bg {
+      background-attachment: scroll;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-hero__bg {
+      animation: none;
+      transform: none;
+      background-attachment: scroll;
+    }
+    .home-hero__overlay {
+      animation: none;
+    }
+    .home-hero__h1 {
+      opacity: 1;
+    }
+    .hero-enter {
+      animation: none;
+      opacity: 1;
+    }
+  }
+
+  body:has(.home-hero) .site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    border-bottom: none;
+    background: transparent;
+  }
+
+  body:has(.home-hero) .site-header__nav a {
+    color: #ffffff !important;
+  }
+
+  body:has(.home-hero) .site-header__nav a:hover,
+  body:has(.home-hero) .site-header__nav a[aria-current='page'] {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  body:has(.home-hero) .site-header__cta {
+    color: #ffffff !important;
+  }
+
+  body:has(.home-hero) .site-header__cta:hover {
+    filter: brightness(1.15);
+    color: #ffffff !important;
+  }
+
+  body:has(.home-hero) .brand-lockup__second {
+    color: #ffffff;
+  }
+
+  /* ═══════════════════════════════════════════════
+     Design Wizard
+     ═══════════════════════════════════════════════ */
+
+  .wizard-section {
+    padding-block: var(--section-y);
+    background: var(--color-page);
+  }
+
+  .wizard-section__header {
+    text-align: center;
+    max-width: var(--container-narrow);
+    margin: 0 auto var(--space-7);
+  }
+
+  .wizard-section__title {
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    line-height: var(--line-heading);
+    margin: 0 0 var(--space-4);
+  }
+
+  .wizard-section__intro {
+    color: var(--color-text-muted);
+    font-size: var(--text-md);
+    max-width: 38rem;
+    margin-inline: auto;
+  }
+
+  .wizard-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+    max-width: var(--container-narrow);
+    margin: 0 auto var(--space-7);
+    width: 100%;
+  }
+
+  .wizard-step {
+    text-align: center;
+  }
+
+  .wizard-step__number {
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--brand-primary);
+    line-height: 1;
+    margin-bottom: var(--space-4);
+    opacity: 0.7;
+  }
+
+  .wizard-step__title {
+    font-size: var(--text-md);
+    font-weight: 600;
+    margin: 0 0 var(--space-2);
+    color: var(--color-heading);
+  }
+
+  .wizard-step__desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .wizard-cta {
+    text-align: center;
+  }
+
+  /* ═══════════════════════════════════════════════
+     Swatch Preview
+     ═══════════════════════════════════════════════ */
+
+  .swatch-preview {
+    padding-block: var(--section-y-compact) var(--section-y);
+    background: var(--color-section);
+    text-align: center;
+  }
+
+  .swatch-preview__grid {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-5);
+  }
+
+  .swatch-preview__item {
+    width: 6rem;
+    height: 6rem;
+    border-radius: var(--radius-md);
+    background: var(--swatch);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: var(--space-2);
+    border: 2px solid var(--color-border);
+    transition: transform 0.2s ease;
+  }
+
+  .swatch-preview__item:hover {
+    transform: translateY(-4px);
+  }
+
+  .swatch-preview__label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    background: var(--color-page);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-xs);
+  }
+
+  .swatch-preview__hint {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  /* ═══════════════════════════════════════════════
+     Process Context
+     ═══════════════════════════════════════════════ */
+
+  .process-context {
+    padding-block: var(--section-y) 0;
+    text-align: center;
+  }
+
+  .process-context__title {
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    line-height: var(--line-heading);
+    margin: 0;
+  }
+
+  /* ═══════════════════════════════════════════════
+     Services — 4 portrait image tiles
+     ═══════════════════════════════════════════════ */
+
+  .services-inline {
+    padding-block: var(--section-y);
+  }
+
+  .services-inline__track {
+    row-gap: var(--space-6);
+  }
+
+  .services-inline__item {
+    grid-column: span 3;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .services-inline__image-wrap {
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+  }
+
+  .services-inline__image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+  }
+
+  .services-inline__item:hover .services-inline__image-wrap img {
+    transform: scale(1.04);
+  }
+
+  .services-inline__label-block {
+    background: var(--color-section);
+    padding: 0.75rem 0.9rem;
+  }
+
+  .services-inline__label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-heading);
+  }
+
+  /* ═══════════════════════════════════════════════
+     Pricing Section
+     ═══════════════════════════════════════════════ */
+
+  .pricing-section {
+    padding-block: var(--section-y);
+    background: var(--color-section);
+  }
+
+  .pricing-section__header {
+    text-align: center;
+    max-width: var(--container-narrow);
+    margin: 0 auto var(--space-7);
+  }
+
+  .pricing-section__title {
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    line-height: var(--line-heading);
+    margin: 0 0 var(--space-4);
+  }
+
+  .pricing-section__intro {
+    color: var(--color-text-muted);
+    font-size: var(--text-md);
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+
+  .pricing-card {
+    background: var(--color-page);
+    padding: var(--space-6);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .pricing-card__label {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin: 0 0 var(--space-3);
+  }
+
+  .pricing-card__price {
+    font-size: var(--text-xl);
+    font-weight: 500;
+    color: var(--brand-primary);
+    margin: 0 0 var(--space-4);
+  }
+
+  .pricing-card__desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ═══════════════════════════════════════════════
+     FAQ Section
+     ═══════════════════════════════════════════════ */
+
+  .faq-section {
+    padding-block: var(--section-y);
+    background: var(--color-page);
+  }
+
+  .faq-section__title {
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    line-height: var(--line-heading);
+    margin: 0 0 var(--space-6);
+    text-align: center;
+  }
+
+  /* ═══════════════════════════════════════════════
+     CTA Band
+     ═══════════════════════════════════════════════ */
+
+  .cta-band {
+    padding-block: var(--section-y);
+    background: var(--brand-primary);
+    color: #ffffff;
+  }
+
+  .cta-band__inner {
+    text-align: center;
+  }
+
+  .cta-band__eyebrow {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: var(--space-3);
+  }
+
+  .cta-band__title {
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    line-height: var(--line-heading);
+    margin: 0 0 var(--space-4);
+    max-width: 28rem;
+    margin-inline: auto;
+  }
+
+  .cta-band__text {
+    font-size: var(--text-md);
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 30rem;
+    margin: 0 auto var(--space-6);
+  }
+
+  .cta-band__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: center;
+  }
+
+  .cta-band__secondary {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .cta-band__secondary:hover {
+    border-color: #ffffff;
+  }
+
+  /* ═══════════════════════════════════════════════
+     Section divider
+     ═══════════════════════════════════════════════ */
+
+  .section-divider {
+    border: none;
+    margin: 0;
+    height: 1px;
+    background: var(--color-rule);
+  }
+
+  .eyebrow {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-3);
+  }
+
+  .section-heading {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-6);
+  }
+
+  /* ═══════════════════════════════════════════════
+     Responsive
+     ═══════════════════════════════════════════════ */
+
+  @media (max-width: 900px) {
+    .home-hero__content {
+      grid-column: 1 / span 7;
+    }
+
+    .services-inline__item {
+      grid-column: span 6;
+    }
+
+    .wizard-steps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 24rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .home-hero__content {
+      grid-column: 1;
+    }
+
+    .home-hero__content h1 {
+      font-size: clamp(2.75rem, 14vw, 4rem);
+      overflow-wrap: anywhere;
+    }
+
+    .home-hero__intro {
+      font-size: var(--text-base);
+    }
+
+    .services-inline__item {
+      grid-column: 1;
+    }
+
+    .wizard-steps {
+      grid-template-columns: 1fr;
+      max-width: 20rem;
+    }
+
+    .pricing-grid {
+      max-width: 100%;
+    }
+  }
+</style>

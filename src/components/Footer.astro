@@ -1,0 +1,420 @@
+---
+interface Props {
+  site: {
+    name: string;
+    email?: string;
+    phone?: string;
+    address?: string;
+    socialLinks?: Array<{ label: string; url: string }>;
+  };
+  variant?: 'default' | 'dark';
+}
+
+const { site, variant = 'default' } = Astro.props;
+const year = new Date().getFullYear();
+const isDark = variant === 'dark';
+
+const navLinks = [
+  { label: 'Services', href: '/services/' },
+  { label: 'Gallery', href: '/services/' },
+  { label: 'Process', href: '/#process' },
+  { label: 'Contact', href: '/contact/' },
+];
+---
+
+<footer class:list={['site-footer', isDark && 'site-footer--dark']}>
+  <div class="site-footer__main container">
+    <!-- Column 1: brand + tagline -->
+    <div class="site-footer__brand">
+      <a href="/" aria-label={`${site.name} home`} class="site-footer__logo-link">
+        <span class="brand-lockup brand-lockup--footer">
+          <span class="brand-lockup__primary">
+            <span class="brand-lockup__first">Master</span>
+            <span class="brand-lockup__second">Cabinet</span>
+          </span>
+        </span>
+      </a>
+      <p class="site-footer__tagline">
+        Premium custom cabinetry and kitchen design.<br />Proudly made in Melbourne.
+      </p>
+    </div>
+
+    <!-- Column 2: navigation -->
+    <div class="site-footer__column">
+      <h4 class="site-footer__label">Navigate</h4>
+      <nav class="site-footer__nav" aria-label="Footer navigation">
+        {navLinks.map((link) => (
+          <a href={link.href}>{link.label}</a>
+        ))}
+      </nav>
+    </div>
+
+    <!-- Column 3: contact -->
+    <div class="site-footer__column">
+      <h4 class="site-footer__label">Contact</h4>
+      <ul class="site-footer__contact">
+        {site.phone && (
+          <li>
+            <a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a>
+          </li>
+        )}
+        {site.email && (
+          <li>
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+          </li>
+        )}
+        {site.address && (
+          <li class="site-footer__address">
+            <span>{site.address}</span>
+          </li>
+        )}
+      </ul>
+    </div>
+
+    <!-- Column 4: social -->
+    <div class="site-footer__column">
+      <h4 class="site-footer__label">Follow</h4>
+      <div class="site-footer__social">
+        {site.socialLinks?.map((link) => {
+          if (link.label === 'Instagram') {
+            return (
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                class="site-footer__social-icon"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+                <span class="site-footer__social-label">{link.label}</span>
+              </a>
+            );
+          }
+          return (
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="site-footer__social-link"
+            >
+              {link.label}
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="site-footer__bottom">
+    <div class="site-footer__bottom-inner container">
+      <p class="site-footer__copy">&copy; {year} {site.name}. All rights reserved.</p>
+      <p class="site-footer__credit">Built in Melbourne &mdash; where good things are made.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* =============================================
+     Footer — timber / warm, spacious
+     ============================================= */
+
+  .site-footer {
+    border-top: 1px solid var(--color-rule);
+    background: var(--color-soft);
+  }
+
+  /* ---- Main grid ---- */
+
+  .site-footer__main {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: var(--space-7) var(--space-5);
+    padding-block: var(--space-8);
+  }
+
+  /* ---- Brand column ---- */
+
+  .site-footer__brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .site-footer__logo-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .site-footer__logo-link:hover {
+    opacity: 0.75;
+  }
+
+  .site-footer__tagline {
+    margin: 0;
+    max-width: 22ch;
+    font-size: var(--text-sm);
+    line-height: var(--line-body);
+    color: var(--color-text-muted);
+  }
+
+  /* ---- Brand lockup (footer size) ---- */
+
+  .site-footer .brand-lockup__primary {
+    font-size: 1.5rem;
+  }
+
+  .site-footer--dark .brand-lockup__first {
+    color: var(--color-gold);
+  }
+
+  .site-footer--dark .brand-lockup__second {
+    color: #ffffff;
+  }
+
+  /* ---- Columns ---- */
+
+  .site-footer__column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .site-footer__label {
+    margin: 0;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  /* ---- Nav ---- */
+
+  .site-footer__nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .site-footer__nav a {
+    color: var(--color-text);
+    font-size: var(--text-sm);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .site-footer__nav a:hover {
+    color: var(--brand-primary);
+  }
+
+  /* ---- Contact ---- */
+
+  .site-footer__contact {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .site-footer__contact li {
+    font-size: var(--text-sm);
+    color: var(--color-text);
+  }
+
+  .site-footer__contact a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .site-footer__contact a:hover {
+    color: var(--brand-primary);
+  }
+
+  .site-footer__address span {
+    color: var(--color-text-muted);
+  }
+
+  /* ---- Social ---- */
+
+  .site-footer__social {
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+  }
+
+  .site-footer__social-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .site-footer__social-icon:hover {
+    color: var(--brand-primary);
+    transform: translateY(-1px);
+  }
+
+  .site-footer__social-label {
+    font-size: var(--text-sm);
+  }
+
+  .site-footer__social-link {
+    color: var(--color-text);
+    font-size: var(--text-sm);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .site-footer__social-link:hover {
+    color: var(--brand-primary);
+  }
+
+  /* ---- Bottom bar ---- */
+
+  .site-footer__bottom {
+    border-top: 1px solid var(--color-rule);
+    padding-block: var(--space-4);
+  }
+
+  .site-footer__bottom-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .site-footer__copy,
+  .site-footer__credit {
+    margin: 0;
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+
+  /* =============================================
+     Dark variant
+     ============================================= */
+
+  .site-footer--dark {
+    border-top: none;
+    background: #111111;
+  }
+
+  .site-footer--dark .site-footer__tagline {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .site-footer--dark .site-footer__label {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .site-footer--dark .site-footer__nav a,
+  .site-footer--dark .site-footer__contact a,
+  .site-footer--dark .site-footer__contact li,
+  .site-footer--dark .site-footer__social-icon,
+  .site-footer--dark .site-footer__social-link {
+    color: #ffffff;
+  }
+
+  .site-footer--dark .site-footer__nav a:hover,
+  .site-footer--dark .site-footer__contact a:hover,
+  .site-footer--dark .site-footer__social-icon:hover,
+  .site-footer--dark .site-footer__social-link:hover {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .site-footer--dark .site-footer__address span {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .site-footer--dark .site-footer__logo {
+    filter: brightness(0) saturate(100%) invert(1);
+  }
+
+  .site-footer--dark .site-footer__bottom {
+    border-top-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .site-footer--dark .site-footer__copy,
+  .site-footer--dark .site-footer__credit {
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  /* =============================================
+     Responsive
+     ============================================= */
+
+  @media (max-width: 900px) {
+    .site-footer__main {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6) var(--space-4);
+    }
+
+    .site-footer__brand {
+      grid-column: 1 / -1;
+      align-items: flex-start;
+    }
+  }
+
+  @media (max-width: 660px) {
+    .site-footer__main {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+      padding-block: var(--space-6);
+    }
+
+    .site-footer__brand {
+      align-items: center;
+      text-align: center;
+    }
+
+    .site-footer__logo-link {
+      justify-content: center;
+    }
+
+    .site-footer__tagline {
+      max-width: none;
+    }
+
+    .site-footer__column {
+      align-items: center;
+      text-align: center;
+    }
+
+    .site-footer__nav {
+      align-items: center;
+    }
+
+    .site-footer__contact {
+      align-items: center;
+    }
+
+    .site-footer__bottom-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
