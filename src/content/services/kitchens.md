@@ -1,20 +1,21 @@
 ---
-title: Kitchen Design & Installation
-summary: "From concept to completion — custom kitchens designed around how you live. Handleless, Hamptons, Scandinavian, or classic. Every style, one build quality."
+title: Custom Kitchens
+summary: "Designer kitchens built to your exact specifications. Handleless, shaker, modern, or traditional — we craft it all in our Melbourne workshop."
 order: 1
-featured: true
+icon: Kitchen
 ---
 
-Your kitchen is the heart of your home. It deserves more than a standard catalogue.
+## Your Dream Kitchen, Made in Melbourne
 
-We design and build custom kitchens for Melbourne homes — from light and airy Scandinavian schemes to warm, elegant Hamptons styles. Each kitchen is crafted in our workshop and installed by our team.
+From sleek handleless kitchens to classic shaker profiles, every Master Cabinet kitchen is designed in-house and built to measure. We work with you through material selection, layout planning, and finish choices so the result fits your home and your lifestyle.
 
-**What we do:**
-- Full kitchen design and consultation
-- Custom cabinetry — all styles and finishes
-- Stone and engineered benchtops
-- Splashbacks and feature joinery
-- Handleless and push-to-open systems
-- Appliance integration and joinery
+### What We Do
 
-We work with your space, your budget, and your way of living. Design it online, then let's build it together.
+- **Custom cabinetry design** — full-height pantries, island benches, breakfast bars
+- **Material selection** — laminate, 2-pack, timber veneer, stone benchtops
+- **Smart storage** — soft-close drawers, pull-out pantries, integrated organisers
+- **Appliance integration** — seamless fit for fridge, dishwasher, rangehood
+- **Handless systems** — J-pull, rebate, and push-to-open mechanisms
+- **Benchtop supply & install** — engineered stone, timber, laminate
+
+Every kitchen includes a free video consultation with our design team, a detailed 3D plan, and a fixed-price quote before any work begins.

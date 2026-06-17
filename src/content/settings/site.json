@@ -1,5 +1,5 @@
 {
-  "name": "MasterCabinet",
+  "name": "Master Cabinet",
   "description": "Premium custom cabinetry and kitchen design for Melbourne homes. Design your dream kitchen online — visualise, price, and book your consultation.",
   "url": "https://mastercabinet.com.au",
   "email": "admin@mastercabinet.com.au",
@@ -15,10 +15,6 @@
     {
       "label": "Instagram",
       "url": "https://instagram.com/mastercabinet"
-    },
-    {
-      "label": "Twitter",
-      "url": "https://twitter.com/mastercabinet"
     }
   ]
 }

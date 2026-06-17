@@ -1,23 +1,54 @@
 {
   "hero": {
-    "variant": "image-full",
-    "eyebrow": "MasterCabinet — Melbourne",
-    "title": "Your dream kitchen, designed and built by you.",
-    "intro": "Design your custom kitchen online in minutes. Choose finishes, visualise swatches, get an instant ballpark price, and book a free Zoom consultation — all from one place.",
-    "primaryLabel": "Design Your Kitchen",
-    "primaryUrl": "/#design-wizard",
-    "imageUrl": "/mastercabinet/uploads/hero-kitchen.jpg"
+    "title": "Melbourne's Premium<br>Cabinet Maker",
+    "intro": "Design your dream kitchen online. Choose finishes, see your price instantly, and book a free video consultation with our design team.",
+    "primaryCta": {
+      "label": "Design Your Kitchen →",
+      "url": "/#design-wizard"
+    },
+    "secondaryCta": {
+      "label": "See Our Work",
+      "url": "#gallery"
+    },
+    "imageUrl": "/mastercabinet/uploads/MasterCabinet-Home-3.jpg"
   },
-  "servicesVariant": "grid",
-  "testimonialsVariant": "grid",
-  "galleryVariant": "portfolio",
-  "ctaVariant": "band",
-  "gallery": [
-    { "title": "Modern kitchen renovation", "description": "Custom cabinetry, Hampton style, Brighton", "imageUrl": "/mastercabinet/uploads/gallery-1.jpg" },
-    { "title": "Handleless kitchen", "description": "Minimalist joinery, Fitzroy North", "imageUrl": "/mastercabinet/uploads/gallery-2.jpg" },
-    { "title": "Walk-in pantry", "description": "Full-height storage, Malvern", "imageUrl": "/mastercabinet/uploads/gallery-3.jpg" },
-    { "title": "Scandinavian kitchen", "description": "Light oak and white cabinetry, Elwood", "imageUrl": "/mastercabinet/uploads/gallery-4.jpg" },
-    { "title": "Laundry fit-out", "description": "Custom bench and overheads, Reservoir", "imageUrl": "/mastercabinet/uploads/gallery-5.jpg" },
-    { "title": "Butler's pantry", "description": "Premium joinery, Kew", "imageUrl": "/mastercabinet/uploads/gallery-6.jpg" }
-  ]
+  "introduction": {
+    "eyebrow": "Master Cabinet",
+    "heading": "Custom Joinery, Built for Melbourne Homes",
+    "body": "For over a decade, Master Cabinet has been crafting premium kitchens, laundries, wardrobes, and custom joinery for Melbourne homeowners. From concept to installation, every piece is designed in-house and built by our team of experienced cabinet makers."
+  },
+  "stats": [
+    { "value": "12+", "label": "Years Experience" },
+    { "value": "500+", "label": "Kitchens Built" },
+    { "value": "4.9", "label": "Google Rating" },
+    { "value": "100%", "label": "Australian Made" }
+  ],
+  "trustBar": {
+    "heading": "Trusted by Melbourne homeowners"
+  },
+  "selectedWork": {
+    "eyebrow": "Our Work",
+    "heading": "Recent Projects",
+    "cta": {
+      "label": "View All Projects →",
+      "url": "#gallery"
+    }
+  },
+  "ctaBand": {
+    "eyebrow": "Ready to Get Started?",
+    "heading": "Book Your Free Video Consultation",
+    "body": "Meet with our design team over Zoom. We'll discuss your vision, show you material samples digitally, and provide a detailed quote — all from the comfort of your home.",
+    "primaryCta": {
+      "label": "Book a Consultation",
+      "url": "#booking"
+    },
+    "secondaryCta": {
+      "label": "0423 162 515",
+      "url": "tel:0423162515"
+    }
+  },
+  "seo": {
+    "title": "Master Cabinet | Premium Custom Cabinetry Melbourne",
+    "description": "Design your dream kitchen online with Master Cabinet. Australian-made custom cabinetry, instant ballpark pricing, and free video consultations. Melbourne-based."
+  }
 }

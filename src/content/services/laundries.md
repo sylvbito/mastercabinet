@@ -1,18 +1,19 @@
 ---
-title: Laundry Cabinetry
-summary: "Built-in laundry cabinetry that makes the weekly wash feel less like work. Smart storage, durable finishes, custom fit."
-order: 3
-featured: true
+title: Laundry Cabinets
+summary: "Functional, beautiful laundry designs with smart storage. Maximise every centimetre of your laundry space."
+order: 2
+icon: Laundry
 ---
 
-A well-designed laundry turns a chore zone into a workspace you actually enjoy using. We design and build custom laundry cabinetry that fits your space perfectly.
+## Laundry Cabinetry That Works Hard
 
-**What we do:**
-- Full-height overhead cabinets
-- Custom bench tops — stone, laminate, solid surface
+A well-designed laundry makes the weekly wash effortless. We build custom cabinetry that fits your space perfectly — overhead cupboards, broom cupboards, benchtops, and trough cabinets designed around how you actually use the room.
+
+### Services
+
+- Overhead and base cabinets
+- Stone or laminate benchtops
+- Trough cabinet integration
 - Pull-out drying racks and hampers
-- Broom cupboard integration
-- Ironing station joinery
-- Appliance housing — washer, dryer, and more
-
-Designed online, built in Melbourne, installed by our team.
+- Broom and ironing board storage
+- Waterproof and easy-clean finishes

@@ -1,5 +1,5 @@
 {
-  "question": "Do you offer free online consultations?",
-  "answer": "Yes! After you complete the online design wizard, you can book a free 30-minute Zoom consultation with our design team. We'll walk through your selections, answer questions, and discuss any site-specific considerations. No obligation, no pressure — just honest advice.",
-  "order": 5
+  "question": "What areas do you service?",
+  "answer": "We serve all Melbourne metropolitan areas, including the inner suburbs, eastern suburbs, south-eastern suburbs, and Mornington Peninsula. Contact us to confirm we service your specific location.",
+  "order": 1
 }

@@ -1,22 +1,21 @@
 ---
-title: Why invest in custom cabinetry?
-summary: "Flat-pack vs custom-built — what you actually get for the difference in price."
-publishDate: 2025-05-15
-author: MasterCabinet Team
-draft: true
-seoTitle: Why invest in custom cabinetry? | MasterCabinet
-seoDescription: The difference between flat-pack and custom-built cabinetry — materials, construction, fit, and longevity.
+title: "Why Custom Cabinetry Beats Flat-Pack"
+summary: "Thinking about renovating your kitchen? Here's why custom cabinetry from Master Cabinet outperforms flat-pack alternatives in quality, longevity, and value."
+publishDate: 2025-06-01
 ---
 
-Not all cabinetry is created equal. If you have visited a hardware store recently, you will have seen rows of standard-sized cabinet boxes. They are inexpensive, available immediately, and they fit well enough in a standard-width space.
+## Built to Last
 
-Custom cabinetry is different by design. Every box is built to fit your space exactly — not approximately. Every door is aligned by hand. Every finish is applied after assembly, so there are no exposed cut edges inside your drawers.
+Flat-pack cabinets are mass-produced to a price point. Custom cabinetry is built to your specifications, from materials chosen for durability and beauty. The difference isn't just cosmetic — it's structural.
 
-**When custom makes sense:**
+### Better Materials
 
-- **Non-standard spaces.** Older Melbourne homes, heritage layouts, and modern open-plan designs rarely fit standard module sizes. Custom cabinetry uses every centimetre.
-- **Specific storage needs.** Pull-out pantries, integrated bins, spice racks, appliance garages, and cutlery dividers — custom means you decide where everything goes.
-- **Design continuity.** Custom allows you to match cabinetry across rooms — kitchen, laundry, bathroom, and wardrobe — with consistent materials, colours, and hardware.
-- **Long-term value.** Custom cabinetry is typically built with dovetail joinery, soft-close hardware, and moisture-resistant materials that outlast flat-pack by years.
+We use 18mm moisture-resistant board throughout, European soft-close hinges and drawer runners, and premium finishes that won't peel or fade. Flat-pack uses thinner materials, basic hardware, and melamine surfaces that chip and swell over time.
 
-Use our online Design Your Kitchen tool to explore finishes and pricing, then book a free Zoom consultation to discuss your project.
+### Perfect Fit
+
+Your walls aren't perfectly square. Your floor isn't perfectly level. Custom cabinetry is built to fit your actual space, not a standard module size. No filler panels, no awkward gaps, no compromises.
+
+### Better Value Over Time
+
+A custom kitchen costs more upfront but lasts 2-3 times longer than flat-pack. When you factor in replacement costs, custom cabinetry is actually better value — and you get to enjoy a superior kitchen every single day.

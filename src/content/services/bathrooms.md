@@ -1,18 +1,19 @@
 ---
-title: Bathroom Vanities & Joinery
-summary: "Floating vanities, mirrored cabinets, and full-height storage — custom bathroom joinery that balances looks and everyday function."
-order: 2
-featured: true
+title: Bathroom Vanities
+summary: "Custom vanity cabinets that set the tone for your bathroom. Made from moisture-resistant materials with your choice of finishes."
+order: 5
+icon: Bathroom
 ---
 
-Your bathroom should work as hard as you do. We design and build custom bathroom joinery that maximises storage without sacrificing style.
+## Vanity Units Built to Last
 
-**What we do:**
-- Floating and floor-mount vanity units
-- Custom mirrored cabinets and shaving niches
-- Full-height linen storage
-- Laundry-to-bathroom transitions
-- Stone and solid surface benchtops
-- Soft-close drawer systems
+A bathroom vanity takes more daily wear than almost any other cabinet in the home. We build ours from moisture-resistant materials with durable finishes, soft-close hardware, and smart storage designed for toiletries, towels, and cleaning supplies.
 
-Every piece is made to measure for your Melbourne home. Choose your finish online, then book a site measure to lock in the details.
+### Options
+
+- Wall-hung and freestanding vanity cabinets
+- Stone, laminate, and solid surface benchtops
+- Integrated basins and vessel sinks
+- Soft-close doors and drawers
+- Mirror cabinets and lighting options
+- Waterproof panel finishes
